@@ -16,12 +16,32 @@
         var Hoorntje = ['Hoorntje', 'H', 'h']
         var Bakje = ['Bakje', 'B', 'b']
         var HoorntjeBakje = ""
-        var HoortnjeBakjeCheck
         var WatBentU = ""
+        var Smaken = { Aardbei: 0, Chocolade: 0, Vanille: 0 }
+        // var Aardbei = 0
+
+
+
+        function smaak(Aantal) {
+            for (let i = 0; i < Aantal; i++) {
+                VraagSmaak = 0
+                while (VraagSmaak == 0) {
+                    SmaakPerBol = prompt(`Welke smaak wilt u voor uw bolletje?  A) Aardbei, C) Chocolade of V) Vanille?:`)
+                    if (SmaakPerBol = "A") {
+                        //Aardbei++;
+                        Smaken.Aardbei = [parseInt(Smaken.Aardbei) + 1] // hier moet de value van aardbei += 1 worden
+                        VraagSmaak = 1
+                    }
+                    else {
+                        VraagSmaak = 0
+                    }
+                }
+            }
+        }
 
 
         while (!Particulier.includes(WatBentU) && !Zakelijk.includes(WatBentU)) {
-            var WatBentU = prompt("Bent u particulier (P of zakelijk (Z ?")
+            var WatBentU = prompt("Bent u Particulier (P of Zakelijk (Z ?")
 
             if (!Particulier.includes(WatBentU) && !Zakelijk.includes(WatBentU)) {
                 alert("Antwoord met (P) of (Z)")
@@ -35,19 +55,31 @@
             bolletjes = parseInt(prompt("Hoeveel bolletjes wilt u?"));
         }
 
+
+
         if (bolletjes <= 3) {
             while (!Hoorntje.includes(HoorntjeBakje) && !Bakje.includes(HoorntjeBakje)) {
-                HoorntjeBakje = prompt("Wilt u een hoorntje of een bakje?")
+                HoorntjeBakje = prompt("Wilt u een Hoorntje (H of een Bakje? (B")
 
                 if (!Hoorntje.includes(HoorntjeBakje) && !Bakje.includes(HoorntjeBakje)) {
                     alert("Antwoord met (H) of (B)")
                 }
             }
+
+            smaak(bolletjes)
         }
 
         else if (bolletjes >= 4 && bolletjes <= 8) {
 
         }
+
+        else if (bolletjes > 8) {
+            alert("dat waren teveel bolletjes")
+        }
+
+        alert(Smaken.Aardbei)
+
+
 
 
 
