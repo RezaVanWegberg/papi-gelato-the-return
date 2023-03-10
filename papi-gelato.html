@@ -13,8 +13,12 @@
     <script>
         var Particulier = ['Particulier', 'P', 'p']
         var Zakelijk = ['Zakelijk', 'Z', 'z']
+        var Hoorntje = ['Hoorntje', 'H', 'h']
+        var Bakje = ['Bakje', 'B', 'b']
+        var HoorntjeBakje = ""
+        var HoortnjeBakjeCheck
         var WatBentU = ""
-        var Stop = 0
+
 
         while (!Particulier.includes(WatBentU) && !Zakelijk.includes(WatBentU)) {
             var WatBentU = prompt("Bent u particulier (P of zakelijk (Z ?")
@@ -24,14 +28,28 @@
             }
         }
 
-        var num = parseInt(prompt("Enter whole number"));
+        var bolletjes = parseInt(prompt("Hoeveel bolletjes wilt u?"));
 
-        while (num !== parseInt(num)) {
-            alert("Please enter only numbers!");
-            num = parseInt(prompt("Enter number"));
+        while (bolletjes !== parseInt(bolletjes)) {
+            alert("Vul alleen een heel getal in");
+            bolletjes = parseInt(prompt("Hoeveel bolletjes wilt u?"));
         }
 
-        alert(num)
+        if (bolletjes <= 3) {
+            while (!Hoorntje.includes(HoorntjeBakje) && !Bakje.includes(HoorntjeBakje)) {
+                HoorntjeBakje = prompt("Wilt u een hoorntje of een bakje?")
+
+                if (!Hoorntje.includes(HoorntjeBakje) && !Bakje.includes(HoorntjeBakje)) {
+                    alert("Antwoord met (H) of (B)")
+                }
+            }
+        }
+
+        else if (bolletjes >= 4 && bolletjes <= 8) {
+
+        }
+
+
 
     </script>
 </body>
