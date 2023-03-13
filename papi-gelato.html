@@ -19,6 +19,8 @@
         var WatBentU = ""
         var Smaken = { Aardbei: 0, Chocolade: 0, Vanille: 0 }
         var Topping = { Geen: 0, Slagroom: 0, Sprinkels: 0, CaramelSaus: 0 }
+        var ToppingPrijs = 0
+        var TotalePrijs = 0
 
 
 
@@ -52,21 +54,21 @@
             for (let i = 1; i <= Aantal; i++) {
                 VraagTopping = 0
                 while (VraagTopping == 0) {
-                    ToppingPerBol = prompt(`Welke topping wilt u voor uw bolletje? ${i} A) Geen, B) Slagroom, C) Sprinkels of D) Caramel Saus?`)
+                    ToppingPerBol = prompt(`Welke topping wilt u voor uw bolletje? ${i} Geen (A, Slagroom (B, Sprinkels (C of Caramel Saus (D ?`)
                     if (ToppingPerBol == "A") {
-                        Smaken.Aardbei = [parseInt(Topping.Geen) + 1]
+                        Topping.Geen = [parseInt(Topping.Geen) + 1]
                         VraagTopping = 1
                     }
                     else if (ToppingPerBol == "B") {
-                        Smaken.Chocolade = [parseInt(Topping.Slagroom) + 1]
+                        Topping.Slagroom = [parseInt(Topping.Slagroom) + 1]
                         VraagTopping = 1
                     }
                     else if (ToppingPerBol == "C") {
-                        Smaken.Vanille = [parseInt(Topping.Sprinkels) + 1]
+                        Topping.Sprinkels = [parseInt(Topping.Sprinkels) + 1]
                         VraagTopping = 1
                     }
                     else if (ToppingPerBol == "D") {
-                        Smaken.Vanille = [parseInt(Topping.CaramelSaus) + 1]
+                        Topping.CaramelSaus = [parseInt(Topping.CaramelSaus) + 1]
                         VraagTopping = 1
                     }
                     else {
@@ -75,6 +77,9 @@
                     }
                 }
             }
+
+            var ToppingPrijs = Topping.Slagroom * 0.50 + Topping.Sprinkels * 0.30 + Topping.CaramelSaus * 0.60
+            return ToppingPrijs.toFixed(2)
         }
 
 
@@ -105,14 +110,14 @@
             }
 
             smaak(bolletjes)
-            toppings(bolletjes)
+            ToppingPrijs = parseFloat(toppings(bolletjes))
         }
 
         else if (bolletjes >= 4 && bolletjes <= 8) {
 
             alert("U koos voor meer dan 3 bolletjes dus u heeft een bakje gekregen")
             smaak(bolletjes)
-            toppings(bolletjes)
+            ToppingPrijs = parseFloat(toppings(bolletjes))
         }
 
         else if (bolletjes > 8) {
@@ -120,9 +125,22 @@
         }
 
 
-        alert(`Aardbei = ${Smaken.Aardbei}`)
-        alert(`Chocolade = ${Smaken.Chocolade}`)
-        alert(`Vanille = ${Smaken.Vanille}`)
+        TotalePrijs = bolletjes * 0.95 + ToppingPrijs;
+        TotalePrijs = TotalePrijs.toFixed(2)
+
+        alert(` Bonnetje
+                Aantal:
+                Aardbei = ${Smaken.Aardbei} 
+                Chocolade = ${Smaken.Chocolade} 
+                Vanille = ${Smaken.Vanille}
+
+                Slagroom = ${Topping.Slagroom}
+                Sprinkels = ${Topping.Sprinkels}
+                Caramel saus = ${Topping.CaramelSaus}
+
+                Topping = €${ToppingPrijs}
+                Totale prijs €${TotalePrijs}`)
+
 
 
 
