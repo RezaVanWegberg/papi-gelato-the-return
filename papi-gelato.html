@@ -18,22 +18,60 @@
         var HoorntjeBakje = ""
         var WatBentU = ""
         var Smaken = { Aardbei: 0, Chocolade: 0, Vanille: 0 }
-        // var Aardbei = 0
+        var Topping = { Geen: 0, Slagroom: 0, Sprinkels: 0, CaramelSaus: 0 }
 
 
 
         function smaak(Aantal) {
-            for (let i = 0; i < Aantal; i++) {
+            for (let i = 1; i <= Aantal; i++) {
                 VraagSmaak = 0
                 while (VraagSmaak == 0) {
-                    SmaakPerBol = prompt(`Welke smaak wilt u voor uw bolletje?  A) Aardbei, C) Chocolade of V) Vanille?:`)
-                    if (SmaakPerBol = "A") {
-                        //Aardbei++;
-                        Smaken.Aardbei = [parseInt(Smaken.Aardbei) + 1] // hier moet de value van aardbei += 1 worden
+                    SmaakPerBol = prompt(`Welke smaak wilt u voor uw bolletje? ${i} A) Aardbei, C) Chocolade of V) Vanille?:`)
+                    if (SmaakPerBol == "A") {
+                        Smaken.Aardbei = [parseInt(Smaken.Aardbei) + 1]
                         VraagSmaak = 1
                     }
+                    else if (SmaakPerBol == "C") {
+                        Smaken.Chocolade = [parseInt(Smaken.Chocolade) + 1]
+                        VraagSmaak = 1
+                    }
+                    else if (SmaakPerBol == "V") {
+                        Smaken.Vanille = [parseInt(Smaken.Vanille) + 1]
+                        VraagSmaak = 1
+                    }
+
                     else {
+                        alert('Antwoord met A, C of V')
                         VraagSmaak = 0
+                    }
+                }
+            }
+        }
+
+        function toppings(Aantal) {
+            for (let i = 1; i <= Aantal; i++) {
+                VraagTopping = 0
+                while (VraagTopping == 0) {
+                    ToppingPerBol = prompt(`Welke topping wilt u voor uw bolletje? ${i} A) Geen, B) Slagroom, C) Sprinkels of D) Caramel Saus?`)
+                    if (ToppingPerBol == "A") {
+                        Smaken.Aardbei = [parseInt(Topping.Geen) + 1]
+                        VraagTopping = 1
+                    }
+                    else if (ToppingPerBol == "B") {
+                        Smaken.Chocolade = [parseInt(Topping.Slagroom) + 1]
+                        VraagTopping = 1
+                    }
+                    else if (ToppingPerBol == "C") {
+                        Smaken.Vanille = [parseInt(Topping.Sprinkels) + 1]
+                        VraagTopping = 1
+                    }
+                    else if (ToppingPerBol == "D") {
+                        Smaken.Vanille = [parseInt(Topping.CaramelSaus) + 1]
+                        VraagTopping = 1
+                    }
+                    else {
+                        alert('Antwoord met A, B, C of D')
+                        VraagTopping = 0
                     }
                 }
             }
@@ -48,14 +86,14 @@
             }
         }
 
+
+
         var bolletjes = parseInt(prompt("Hoeveel bolletjes wilt u?"));
 
         while (bolletjes !== parseInt(bolletjes)) {
             alert("Vul alleen een heel getal in");
             bolletjes = parseInt(prompt("Hoeveel bolletjes wilt u?"));
         }
-
-
 
         if (bolletjes <= 3) {
             while (!Hoorntje.includes(HoorntjeBakje) && !Bakje.includes(HoorntjeBakje)) {
@@ -67,17 +105,25 @@
             }
 
             smaak(bolletjes)
+            toppings(bolletjes)
         }
 
         else if (bolletjes >= 4 && bolletjes <= 8) {
 
+            alert("U koos voor meer dan 3 bolletjes dus u heeft een bakje gekregen")
+            smaak(bolletjes)
+            toppings(bolletjes)
         }
 
         else if (bolletjes > 8) {
             alert("dat waren teveel bolletjes")
         }
 
-        alert(Smaken.Aardbei)
+
+        alert(`Aardbei = ${Smaken.Aardbei}`)
+        alert(`Chocolade = ${Smaken.Chocolade}`)
+        alert(`Vanille = ${Smaken.Vanille}`)
+
 
 
 
